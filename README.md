@@ -17,4 +17,4 @@ Users can self-manage their linked accounts via the existing Edit Profile page:
 History
 -------
 
-This is a port of the **Unified Login** component from [Rapid Platform](TheRapidPlatform.com).
+This is a port of the **Unified Login** component from [Rapid Platform](http://github.com/perrybutler/rapidplatform).
