@@ -14,6 +14,13 @@ Users can self-manage their linked accounts via the existing Edit Profile page:
 
 ![WP Open Login](http://files.glassocean.net/github/wp-openlogin.png)
 
+Roadmap
+-------
+
+**Don't use wp-load.php**
+
+Figure out how to eliminate the use of "../../wp-load.php" in some of the files, since this isn't always the path.
+
 History
 -------
 
