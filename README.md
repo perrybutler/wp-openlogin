@@ -1,7 +1,7 @@
 WordPress Open Login
 ====================
 
-An OAuth 2.0 / OpenID user registration and login plugin for WordPress which integrates with the existing WordPress Users system. Utilizes a Github "dependency" [fork](http://github.com/perrybutler/lightopenid) of the [LightOpenID library](https://github.com/iignatov/LightOpenID).
+An OAuth 2.0 / OpenID user registration and login plugin for WordPress which integrates with the existing WordPress Users system. Includes/uses the [LightOpenID library](https://github.com/iignatov/LightOpenID).
 
 Who it's for
 ------------
