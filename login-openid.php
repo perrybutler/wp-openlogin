@@ -45,6 +45,8 @@ if(!$openid->mode) {
 	
 	// UNDONE: no need to set returnUrl?
 	//$openid->returnUrl = plugins_url('', __FILE__) . "/login-openid.php";
+	//$openid->returnUrl = get_bloginfo('url'); //plugins_url() . "/login-openid.php";
+	//$openid->returnUrl = "http://dev.glassocean.net/wp-content/plugins/wp-openlogin/login-openid.php";
 	
 	// remember the user's last visited page so we can return there after this process
 	$_SESSION['LAST_URL'] = $_SERVER['HTTP_REFERER'];
@@ -57,7 +59,7 @@ elseif($openid->mode == 'cancel') {
 	$_SESSION['OPENID_IDENTITY'] = "";
 	$_SESSION['OPENID_EMAIL'] = "";
 	// TODO: make a special alert case for when the openid auth is cancelled by the user externally
-	header("Location: " . get_bloginfo("url") . "?alert=register_fail"); exit;
+	header("Location: " . get_bloginfo("url") . "?alert=login_fail&msg=mode 'cancel' was unexpected"); exit;
 } 
 else {
 	// the third-party responded to our request, check if we're authenticated
@@ -93,19 +95,19 @@ else {
 		// after login, redirect to the user's last location
 		header("Location: " . $_SESSION["LAST_URL"]); exit;
 	}
-
+	
 	if ( is_user_logged_in() ) {
 		// link accounts & login - no WP user account is associated with this third-party account, but a WP user account is
 		//	currently logged in so we link the two accounts
 		global $current_user;
 		get_currentuserinfo();
 		$user_id = $current_user->ID;
-		global $rapid_platform;
-		$rapid_platform->login->user_add_linked_account($user_id);
+		global $rapid_login;
+		$rapid_login->user_add_linked_account($user_id);
 		// after linking the account, redirect user to their last url
 		header("Location: " . $_SESSION["LAST_URL"]); exit;
 	}
-	
+
 	if ( !is_user_logged_in() && !$matched_user ) {
 		// register & login - no WP user account is logged in and no WP user account is associated with this third-party
 		//  account so proceed to registration

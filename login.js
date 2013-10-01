@@ -2,18 +2,20 @@ jQuery(document).ready(function() {
 
 	jQuery(".delete-linked-account").click(function(event) {
 		event.preventDefault();
+		var btn = jQuery(this);
+		var eml = btn.data("openid-email");
 		var post_data = {
 				action: "rp_user_delete_linked_account",
-				openid_email: jQuery(this).data["openid_email"],
+				openid_email: eml,
 			}
 		jQuery.ajax({
 			type: "POST",
-			url: wpjs.ajaxurl, //wpjs.plugins_url + "/components/login/login-ajax.php?openid_email=" + jQuery(this).data["openid_email"], 
+			url: wpjs.ajaxurl,
 			data: post_data,
 			success: function(json_response) {
 				var oresponse = JSON.parse(json_response);
 				if (oresponse["result"] == 1) {
-					jQuery(".delete-linked-account").parent().fadeOut();
+					btn.parent().fadeOut();
 				}
 			}
 		});
@@ -33,16 +35,16 @@ jQuery(document).ready(function() {
 // =========================================
 
 function loginFacebook() {
-	window.location = wpjs.plugins_url + "/wp-openlogin/login-facebook.php";
+	window.location = wpjs.plugin_dir_url + "/login-facebook.php";
 }
 
 function loginOpenID(oid_provider) {
-	window.location = wpjs.plugins_url + "/wp-openlogin/login-openid.php?oid_provider=" + encodeURIComponent(oid_provider);
+	window.location = wpjs.plugin_dir_url + "/login-openid.php?oid_provider=" + encodeURIComponent(oid_provider);
 }
 
 function processLogout() {
 	jQuery.ajax({
-		url: wpjs.plugins_url + "/wp-openlogin/process-logout.php", 
+		url: wpjs.plugin_dir_url + "/wp-openlogin/process-logout.php", 
 		success: function(ret) {
 			//alert("Result: " + ret + " Args: " + openid_args);
 			//alert("handleOpenIDResponse SUCCESS: " + ret);

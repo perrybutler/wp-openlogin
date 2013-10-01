@@ -6,18 +6,22 @@
 require_once( "../../../wp-load.php" );
 
 // load the facebook library
-require '../../libs/facebook-php-sdk/facebook.php';
+require 'facebook-php-sdk/facebook.php';
 
 // initiate the user session
 session_start();
+
+// grab the login instance
+global $rapid_login;
 
 // hard code the OPENID_PROVIDER since it is always Facebook
 $_SESSION['OPENID_PROVIDER'] = "Facebook";
 
 // initiate the facebook object
+// TODO: fill this with user's info from a custom settings page/form
 $facebook = new Facebook(array(
-  'appId'  => '1380765298818773',
-  'secret' => 'e9ed2ba3b8f2892130ef267afaeb206d',
+  'appId'  => get_option("facebook_key"), //'1441906709368442',
+  'secret' => get_option("facebook_secret")  //'8280d8a749bf814e1ad373bd2ddde330',
 ));
 
 // set a session variable we can use to monitor the user's authentication status throughout the lifetime of his connection
@@ -27,13 +31,15 @@ $_SESSION['OPENID_EMAIL'] = "";
 // check facebook's "user" so we know if we're at pre-authentication or post-authentication
 $fb_user = $facebook->getUser();
 
+$_SESSION['LAST_URL'] = $_SERVER['HTTP_REFERER'];
+
 if (!$fb_user) {
 	// user is nothing, we are at pre-authentication so we simply start authentication
 	$params = array(
 		'scope' => 'email'
 	);
 	// remember where the user was, so we can return the user to that page
-	$_SESSION['LAST_URL'] = $_SERVER['HTTP_REFERER'];
+	//UNDONE: wasn't working, moved it... $_SESSION['LAST_URL'] = $_SERVER['HTTP_REFERER'];
 	
 	// redirect to the facebook authurl to begin the third party authentication process
 	header("Location: " . $facebook->getLoginUrl($params)); exit;
@@ -63,7 +69,7 @@ else {
 	//	but we should follow the StackExchange pattern...
 	// check if a WP user account has already been linked to this now-authenticated openid account 
 	//  and if so, login that user now...if not, prompt for registration
-	$matched_user = $rapid_platform->login->get_user_by_openid($_SESSION["OPENID_IDENTITY"]);
+	$matched_user = $rapid_login->get_user_by_openid($_SESSION["OPENID_IDENTITY"]);
 	
 	// handle
 	if ( $matched_user ) {
@@ -82,8 +88,7 @@ else {
 		global $current_user;
 		get_currentuserinfo();
 		$user_id = $current_user->ID;
-		global $rapid_platform;
-		$rapid_platform->login->user_add_linked_account($user_id);
+		$rapid_login->user_add_linked_account($user_id);
 		// after linking the account, redirect user to their last url
 		header("Location: " . $_SESSION["LAST_URL"]); exit;
 	}
