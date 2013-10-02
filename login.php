@@ -104,14 +104,8 @@ Class RapidLogin {
 		}
 		echo "</div>";
 		
-		//echo "<p><a class='add-linked-account' href='#'>Add a linked account</a></p>";
-		
-		// TODO: stuff this in an accordion using the link above as the click target/title
 		echo "<p>Link another account:</p>";
 		echo $this->rp_login_form("");
-		//echo do_shortcode("[rp_accordion title='Add a linked account' width='200px']" . $rapid_platform->ui->rp_login("") . "[/rp_accordion]");
-		//echo $rapid_platform->ui->rp_login("");
-		
 	}
 	
 	// TODO: UNSAFE!!! use prepare() before get_results()...
@@ -180,8 +174,6 @@ function rp_login_settings_page() {
 		<h2>WP-OpenLogin Settings</h2>
 		<p>Manage settings for WP-OpenLogin here. Some login providers require the use of an API key/secret. See below for details.</p>
 		<h3>Login with Facebook</h3>
-		<?php session_start(); ?>
-		<?php echo "Last URL: " . $_SESSION["LAST_URL"]; ?>
 		<form method='post' action='options.php'>
 			<?php settings_fields( 'rp-login-settings' ); ?>
 			<?php do_settings_sections( 'rp-login-settings' ); ?>
@@ -199,8 +191,8 @@ function rp_login_settings_page() {
 			<p>
 				<strong>Instructions:</strong>
 				<ol>
-					<li>Register as a Facebook Developer at <a href='https://developers.facebook.com/'>developers.facebook.com</a></li>
-					<li>At Facebook, create a 'New Facebook App'</li>
+					<li>Register as a Facebook Developer at <a href='https://developers.facebook.com/'>developers.facebook.com</a>.</li>
+					<li>At Facebook, create a 'New Facebook App'.</li>
 					<li>At Facebook, configure the 'New Facebook App' to point to your site's domain (URL). This will allow the Login with Facebook button to work on your site.</li>
 					<li>Paste your API key/secret into the fields above, then click Save Changes at the bottom of this page.</li>
 				</ol>
