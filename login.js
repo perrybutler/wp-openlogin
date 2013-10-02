@@ -20,13 +20,6 @@ jQuery(document).ready(function() {
 			}
 		});
 	});
-	
-	/*
-	jQuery(".add-linked-account").click(function() {
-		// TODO: same ajax pattern as delete? not quite...we need to show the login providers first...
-		loginOpenID("google");
-	});
-	*/
 
 });
 
@@ -46,8 +39,6 @@ function processLogout() {
 	jQuery.ajax({
 		url: wpjs.plugin_dir_url + "/wp-openlogin/process-logout.php", 
 		success: function(ret) {
-			//alert("Result: " + ret + " Args: " + openid_args);
-			//alert("handleOpenIDResponse SUCCESS: " + ret);
 			//TODO: refresh page (user login status) with js
 			if (ret == true) {
 				alert('logged out;refresh page');

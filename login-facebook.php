@@ -1,6 +1,6 @@
 <?php
 
-// TODO: we are calling wp-load...bad news!
+// TODO: we are calling wp-load...bad news! 
 
 // load the Wordpress core so this page can access WP functions during an ajax call
 require_once( "../../../wp-load.php" );

@@ -45,8 +45,6 @@ if(!$openid->mode) {
 	
 	// UNDONE: no need to set returnUrl?
 	//$openid->returnUrl = plugins_url('', __FILE__) . "/login-openid.php";
-	//$openid->returnUrl = get_bloginfo('url'); //plugins_url() . "/login-openid.php";
-	//$openid->returnUrl = "http://dev.glassocean.net/wp-content/plugins/wp-openlogin/login-openid.php";
 	
 	// remember the user's last visited page so we can return there after this process
 	$_SESSION['LAST_URL'] = $_SERVER['HTTP_REFERER'];
@@ -84,7 +82,7 @@ else {
 	//  and if so, login that user now...if not, prompt for registration
 	$matched_user = $rapid_login->get_user_by_openid($_SESSION["OPENID_IDENTITY"]);
 	
-	// handle
+	// handle matched user
 	if ( $matched_user ) {
 		// login - a WP user account is already associated with this third-party account, login that user now
 		$user_id = $matched_user->ID;
@@ -96,6 +94,7 @@ else {
 		header("Location: " . $_SESSION["LAST_URL"]); exit;
 	}
 	
+	// handle logged in user
 	if ( is_user_logged_in() ) {
 		// link accounts & login - no WP user account is associated with this third-party account, but a WP user account is
 		//	currently logged in so we link the two accounts
@@ -108,6 +107,7 @@ else {
 		header("Location: " . $_SESSION["LAST_URL"]); exit;
 	}
 
+	// handle logged out user or no matching user
 	if ( !is_user_logged_in() && !$matched_user ) {
 		// register & login - no WP user account is logged in and no WP user account is associated with this third-party
 		//  account so proceed to registration
