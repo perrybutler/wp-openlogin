@@ -11,7 +11,8 @@ Instructions
 ------------
 
 1. Download the plugin files, place them into a "wp-openlogin" folder, then put this folder in your wp-content/plugins directory.
-2. Configure the plugin through the WordPress admin dashboard >> Settings >> WP-OpenLogin.
+2. Login to the WordPress admin dashboard and activate the plugin.
+2. Configure the plugin through Settings >> WP-OpenLogin.
 3. Add a login form to your site using the shortcode [rp_login_form].
 
 Who it's for
