@@ -20,6 +20,8 @@ Who it's for
 
 Implement a single sign-on experience for visitors to your blog/site. Visitors can login with a Google/Yahoo/Facebook button. If the WordPress setting to allow new user registrations is enabled, any guest who authenticates successfully with their OAuth/OpenID provider will have a WordPress user account created for them automatically and linked to their OAuth/OpenID account.
 
+Single sign-on is useful for building a social/community driven site/app where guests would want to authenticate with their third-party account instead of maintaining a separate account for your site/app.
+
 Users can self-manage their linked accounts via the existing Edit Profile page:
 
 ![WP Open Login](http://files.glassocean.net/github/wp-openlogin.png)
