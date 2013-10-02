@@ -30,6 +30,10 @@ Roadmap
 
 Figure out how to eliminate the use of "../../wp-load.php" in some of the files, since this isn't always the path for some WordPress installations.
 
+**Keep the user informed of progress**
+
+Plugin should inform the user when a login/registration is taking place, with a loading icon or Please wait... message. We should also notify the user if it succeeds or fails, with a popup message that fades out quickly. Ideally, we need a simple way to push a message from the server back to the client (using JSON), but the login flow could make this difficult to implement.
+
 History
 -------
 
