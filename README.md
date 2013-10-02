@@ -40,4 +40,4 @@ Plugin should inform the user when a login/registration is taking place, with a 
 History
 -------
 
-This is a port of the **Unified Login** component from [Rapid Platform](http://github.com/perrybutler/rapidplatform).
+This is a port of the **Unified Login** component from two of my other projects, [Rapid Platform](http://github.com/perrybutler/rapidplatform) and BirthSource.
