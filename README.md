@@ -1,7 +1,7 @@
 WordPress OpenLogin
 ====================
 
-It's an OAuth 2.0 / OpenID user registration and login plugin for WordPress which integrates with the existing WordPress Users system. Includes/uses the [LightOpenID library](https://github.com/iignatov/LightOpenID).
+It's an OAuth 2.0 / OpenID user registration and login plugin for WordPress which integrates with the existing WordPress Users system. Includes and uses the [LightOpenID library](https://github.com/iignatov/LightOpenID) and Facebook-PHP-SDK.
 
 Functions in a similar way to the StackExchange/StackOverflow login system - user's have the ability to link multiple third-party accounts to your WordPress site for logging into their WordPress user account.
 
