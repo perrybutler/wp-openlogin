@@ -37,6 +37,18 @@ Figure out how to eliminate the use of "../../wp-load.php" in some of the files,
 
 Plugin should inform the user when a login/registration is taking place, with a loading icon or Please wait... message. We should also notify the user if it succeeds or fails, with a popup message that fades out quickly. Ideally, we need a simple way to push a message from the server back to the client (using JSON), but the login flow could make this difficult to implement.
 
+**Integrate with wp-login**
+
+Integrate with the default WordPress login page, with the ability to remove the default username/password fields (forcing the use of a third-party provider).
+
+**Provider selector**
+
+Include a selector on the settings page which would allow the admin to enable certain providers, ultimately determining which providers will show up in the [rp_login_form] and on the wp-login page.
+
+**Fancy login buttons**
+
+The login form [rp_login_form] is currently text-only, there are no brand icons/buttons for the various third-party providers. Include a few alternate "designs" such as basic/list/grid which the admin could choose from in the backend for quickly changing the style of the login form.
+
 History
 -------
 
