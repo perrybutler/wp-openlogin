@@ -35,17 +35,9 @@ function loginOpenID(oid_provider) {
 	window.location = wpjs.plugin_dir_url + "/login-openid.php?oid_provider=" + encodeURIComponent(oid_provider);
 }
 
-function processLogout() {
+function processLogout(callback) {
 	jQuery.ajax({
-		url: wpjs.plugin_dir_url + "/wp-openlogin/process-logout.php", 
-		success: function(ret) {
-			//TODO: refresh page (user login status) with js
-			if (ret == true) {
-				alert('logged out;refresh page');
-			}
-		}
+		url: wpjs.plugin_dir_url + "/process-logout.php", 
+		success: callback
 	});
-	// remove the viewport dimmer
-	jQuery("#custom-dialog-dimmer").hide();
-	jQuery("#custom-dialog").hide();
 }
