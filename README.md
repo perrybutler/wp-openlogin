@@ -47,7 +47,7 @@ Include a selector on the settings page which would allow the admin to enable ce
 
 **Fancy login buttons**
 
-The login form [rp_login_form] is currently text-only, there are no brand icons/buttons for the various third-party providers. Include a few alternate "designs" such as basic/list/grid which the admin could choose from in the backend for quickly changing the style of the login form.
+The login form [rp_login_form] is currently text-only, there are no brand icons/buttons for the various third-party providers. Include a few alternate "designs" such as basic/list/grid which the admin could choose from in the backend for quickly changing the style of the login form. [OpenID Selector](https://code.google.com/p/openid-selector/) is a popular one.
 
 History
 -------
